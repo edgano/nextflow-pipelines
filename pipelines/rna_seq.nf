@@ -11,7 +11,7 @@ params.reverse_stranded = true  // used by featurecounts
 params.unstranded = false  // used by featurecounts
 params.biotypes_header= "$baseDir/../assets/biotypes_header.txt" // used by featurecounts
 params.mito_name = 'MT' // used by mapsummary
-params.runtag = 'study5607' // HG_RNASeq of cellular DDD models pilot
+params.runtag = 'study6900_run45475' // HG_RNASeq of cellular DDD models pilot
 params.ensembl_lib = "Ensembl 91 EnsDb" // used by tximport, must match used genome version
 params.dropqc = ""
 params.run_deseq2 = false
@@ -100,7 +100,7 @@ include star_tabgenes_matrix from '../modules/rna_seq/star_tabgenes_matrix.nf' p
 
 workflow {
 
-    baton_study_id("5607")
+    baton_study_id("45475")
     
     iget_cram(baton_study_id.out.samples_tsv
 	      .map{a,b -> b}
@@ -108,7 +108,7 @@ workflow {
 	      .map{row->tuple(row.sample, row.sample_supplier_name)}
 	      //.filter { it[1] ==~ /^[rR].*/} //.filter { it[1] ==~ /^[cC].*/}
 	      .map{a,b->a}
-	      , "5607")
+	      , "45475")
     
     //.filter { it[1] ==~ /^[cC].*/} //.filter { it[1] ==~ /^[cC].*/}
     
